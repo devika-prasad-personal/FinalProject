@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 
 public class NewtaskActivity extends AppCompatActivity {
 
@@ -16,6 +18,15 @@ public class NewtaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newtask);
+        Button create = findViewById(R.id.create);
+
+        create.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //this should run algorithm for adding tasks
+                Intent intent = new Intent(NewtaskActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         /**
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
