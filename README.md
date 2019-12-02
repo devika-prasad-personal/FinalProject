@@ -1,3 +1,3 @@
 # FinalProject
 
-#Devika Prasad and Becky Ang's final project wahoo
+Devika Prasad and Becky Ang's final project wahoo
