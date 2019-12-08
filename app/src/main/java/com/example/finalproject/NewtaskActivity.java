@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class NewtaskActivity extends AppCompatActivity {
 
@@ -19,6 +20,11 @@ public class NewtaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newtask);
         Button create = findViewById(R.id.create);
+
+        Intent date = getIntent();
+        int year = date.getIntExtra("year", 0);
+        int month = date.getIntExtra("month", 0);
+        int day = date.getIntExtra("day", 0);
 
         create.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
