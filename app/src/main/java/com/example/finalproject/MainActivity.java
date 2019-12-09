@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
-import androidx.annotation.NonNull;
+//import androidx.annotation.NonNull;
+//import androidx.annotation.Nonnull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+//import javax.annotation.Nonnull;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //gets selected date and adds that information to the intent
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+            public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
                 year = i;
                 month = i1;
                 day = i2;

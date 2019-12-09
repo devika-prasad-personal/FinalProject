@@ -3,18 +3,21 @@ package com.example.finalproject;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
 
 public class NewtaskActivity extends AppCompatActivity {
 
+    float stressNum;
+    float weightNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class NewtaskActivity extends AppCompatActivity {
         int year = date.getIntExtra("year", 0);
         int month = date.getIntExtra("month", 0);
         int day = date.getIntExtra("day", 0);
+        String dateSelected = month + " / " + day + " / " + year;
 
         create.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -33,19 +37,37 @@ public class NewtaskActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /**
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //sets the text of the date the project is due
+        TextView dateDue = findViewById(R.id.dateDue);
+        dateDue.setText(dateSelected);
+
+        // gets the number from the rating bars and saves in stressNum and weightNum
+        // also displays the number in text views
+        RatingBar howStressed = findViewById(R.id.stressRating);
+        stressNum = howStressed.getRating();
+        howStressed.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-        }
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                stressNum = v;
+                TextView numberStress = findViewById(R.id.numberStress);
+                String stressNumAsString = "" + stressNum;
+                numberStress.setText(stressNumAsString);
+            }
         });
-         **/
+
+        RatingBar weight = findViewById(R.id.weight);
+        weightNum = weight.getRating();
+        weight.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                weightNum = v;
+                TextView numberWeight = findViewById(R.id.numberWeight);
+                String weightNumAsString = "" + weightNum;
+                numberWeight.setText(weightNumAsString);
+            }
+        });
+
     }
 
 }

@@ -14,32 +14,50 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/stressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="How stressed are you?" />
 
         <RatingBar
-            android:id="@+id/ratingBar3"
+            android:id="@+id/stressRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:stepSize=".5"/>
+
+        <TextView
+            android:id="@+id/numberStress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/weightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How big is this project?" />
+
         <RatingBar
-            android:id="@+id/ratingBar4"
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:stepSize=".5"/>
+
+        <TextView
+            android:id="@+id/numberWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/dateDue"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Create Task" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
