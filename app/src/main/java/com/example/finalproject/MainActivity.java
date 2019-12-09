@@ -1,7 +1,6 @@
 package com.example.finalproject;
 
 //import androidx.annotation.NonNull;
-//import androidx.annotation.Nonnull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-//import javax.annotation.Nonnull;
 
 public class MainActivity extends AppCompatActivity {
 

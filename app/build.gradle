@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -19,6 +20,10 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -27,4 +32,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    api 'com.google.api-client:google-api-client:1.23.0'
+    api 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    api 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
+    api 'com.google.apis:google-api-services-tasks:v1-rev48-1.23.0' exclude module: 'httpclient'
+    api 'com.google.api-client:google-api-client-android:1.23.0' exclude module: 'httpclient'
+    api 'com.google.http-client:google-http-client-gson:1.23.0' exclude module: 'httpclient'
+    api 'com.google.android.gms:play-services-identity:7.3.0'
 }
