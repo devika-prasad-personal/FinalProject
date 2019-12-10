@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#ffffff"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -13,16 +13,17 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="198dp"
+            android:layout_height="143dp"
+            app:srcCompat="@drawable/conquer" />
 
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
 
         <Button
             android:id="@+id/newTask"
@@ -31,11 +32,11 @@
             android:text="New Task"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
         <LinearLayout
             android:id="@+id/displayTasks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="411dp"
+            android:layout_height="178dp"
+            android:gravity="center"
             android:orientation="vertical">
 
         </LinearLayout>

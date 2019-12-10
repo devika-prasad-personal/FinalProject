@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button newTask = findViewById(R.id.newTask);
         calendarView = findViewById(R.id.calendarView);
-        allTasks.add(new Task("homework","12/9/2019", "12/10/2019", (float) 5.5, (float) 5.5));
-        allTasks.add(new Task("math test","12/9/2019", "12/15/2019", (float) 3.5, (float) 2.5));
+        //allTasks.add(new Task("homework","12/9/2019", "12/10/2019", (float) 5.5, (float) 5.5));
+        //allTasks.add(new Task("math test","12/9/2019", "12/15/2019", (float) 3.5, (float) 2.5));
 
         /**
          * gets the current date in the simple date format and sets the year, month, and day
@@ -93,7 +93,18 @@ public class MainActivity extends AppCompatActivity {
             TextView daysLeft = taskChunk.findViewById(R.id.daysLeft);
             taskName.setText(allTasks.get(j).getName());
             timeToday.setText(allTasks.get(j).getTime());
-            String s = "days left: " + allTasks.get(j).getDaysBetweent() + "";
+            final Task currentTask = allTasks.get(j);
+            Button progress = taskChunk.findViewById(R.id.progress);
+            progress.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    currentTask.decreaseStress();
+                    if (currentTask.isFinished()) {
+                        allTasks.remove(currentTask);
+                    }
+                    setUpUI();
+                }
+            });
+            String s = "Days Left: " + allTasks.get(j).getDaysBetweent() + "";
             daysLeft.setText(s);
             taskLayout.addView(taskChunk);
         }

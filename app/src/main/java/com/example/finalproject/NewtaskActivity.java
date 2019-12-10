@@ -103,11 +103,9 @@ public class NewtaskActivity extends AppCompatActivity {
             }
         });
 
-        TextView displayDays = findViewById(R.id.textView5);
         Task t = new Task(name, dateNow, dateSelected, stressNum, weightNum);
         int daysBetweent = t.getDaysBetweent();
         String daysBetweenAsString = "" + daysBetweent;
-        displayDays.setText(daysBetweenAsString);
 
     }
 

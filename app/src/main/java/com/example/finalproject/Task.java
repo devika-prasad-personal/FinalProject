@@ -34,8 +34,20 @@ public class Task implements Serializable {
     }
 
     public String getTime() {
-        int time = (int) (stress * weight) * 2 / getDaysBetweent();
+        int time = (int) (stress * weight) * 10 / getDaysBetweent();
         return time + " minutes";
+    }
+
+    public void decreaseStress() {
+        stress -= 1;
+
+    }
+
+    public boolean isFinished() {
+        if (stress < 0.5) {
+            return true;
+        }
+        return false;
     }
 
 
