@@ -34,8 +34,8 @@
 
         <LinearLayout
             android:id="@+id/displayTasks"
-            android:layout_width="411dp"
-            android:layout_height="178dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
