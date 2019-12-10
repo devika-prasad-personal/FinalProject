@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button newTask = findViewById(R.id.newTask);
         calendarView = findViewById(R.id.calendarView);
+        allTasks.add(new Task("homework","12/9/2019", "12/10/2019", (float) 5.5, (float) 5.5));
+        allTasks.add(new Task("math test","12/9/2019", "12/15/2019", (float) 3.5, (float) 2.5));
 
         /**
          * gets the current date in the simple date format and sets the year, month, and day
