@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="@android:color/white"
+        >
+
 
         <TextView
             android:id="@+id/stressText"
@@ -47,7 +50,25 @@
         <TextView
             android:id="@+id/numberWeight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text=""/>
+        <TextView
+            android:id="@+id/nameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What is this project called?"/>
+
+        <EditText
+            android:id="@+id/projectName"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="text"/>
+
+        <TextView
+            android:id="@+id/selectedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selected due date: "/>
 
         <TextView
             android:id="@+id/dateDue"

@@ -4,16 +4,21 @@ package com.example.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     int month;
     int day;
     String dateNow;
+    HashMap<String, Task> tasks;
+    boolean tasksCreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button newTask = findViewById(R.id.newTask);
         calendarView = findViewById(R.id.calendarView);
+
+        Intent intent = getIntent();
+
+        if (tasksCreated) {
+            tasks = ((HashMap<String, Task>) intent.getSerializableExtra("tasks"));
+            setUpUI();
+        }
 
         /**
          * gets the current date in the simple date format and sets the year, month, and day
@@ -65,9 +79,32 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("month", month);
                 intent.putExtra("day", day);
                 intent.putExtra("currentDate", dateNow);
-
+                intent.putExtra("tasks", tasks);
+                tasksCreated = true;
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void setUpUI() {
+        LinearLayout taskList = findViewById(R.id.tasks);
+        taskList.setVisibility(View.VISIBLE);
+        taskList.removeAllViews();
+        Iterator taskIterator = tasks.entrySet().iterator();
+        while (taskIterator.hasNext()) {
+
+            Map.Entry mapElement = (Map.Entry)taskIterator.next();
+
+            View messageChunk = getLayoutInflater().inflate(R.layout.chunk_task, taskList, false);
+            //identify boxes
+            TextView name = messageChunk.findViewById(R.id.taskName);
+
+
+            //set text with game information
+            name.setText((String) mapElement.getKey());
+
+            taskList.addView(messageChunk);
+        }
     }
 }
