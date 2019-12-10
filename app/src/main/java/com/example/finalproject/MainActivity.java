@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     int year;
     int month;
     int day;
+    String dateNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
         // https://stackoverflow.com/questions/22461258/how-to-get-date-from-calendarview-oncreate-with-a-specific-format-e-g-dd-mm
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String currentDate = sdf.format(new Date(calendarView.getDate()));
+
         String yearAsString = currentDate.substring(6);
         String monthAsString = currentDate.substring(3,5);
         String dayAsString = currentDate.substring(0,2);
         year = Integer.parseInt(yearAsString);
         month = Integer.parseInt(monthAsString);
         day = Integer.parseInt(dayAsString);
+        dateNow = month + "/" + day + "/" + year;
 
 
         //gets selected date and adds that information to the intent
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
                 year = i;
-                month = i1;
+                month = i1 + 1;
                 day = i2;
             }
         });
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("year", year);
                 intent.putExtra("month", month);
                 intent.putExtra("day", day);
+                intent.putExtra("currentDate", dateNow);
 
                 startActivity(intent);
             }

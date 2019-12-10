@@ -28,7 +28,8 @@ public class NewtaskActivity extends AppCompatActivity {
         int year = date.getIntExtra("year", 0);
         int month = date.getIntExtra("month", 0);
         int day = date.getIntExtra("day", 0);
-        String dateSelected = month + " / " + day + " / " + year;
+        String dateSelected = month + "/" + day + "/" + year;
+        String dateNow = date.getStringExtra("currentDate");
 
         create.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,6 +68,12 @@ public class NewtaskActivity extends AppCompatActivity {
                 numberWeight.setText(weightNumAsString);
             }
         });
+
+        TextView displayDays = findViewById(R.id.textView5);
+        Task t = new Task(dateNow, dateSelected, stressNum, weightNum);
+        int daysBetweent = t.getDaysBetweent();
+        String daysBetweenAsString = "" + daysBetweent;
+        displayDays.setText(daysBetweenAsString);
 
     }
 
