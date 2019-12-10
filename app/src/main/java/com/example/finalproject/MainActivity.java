@@ -3,6 +3,7 @@ package com.example.finalproject;
 //import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -10,10 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     int month;
     int day;
     String dateNow;
+    ArrayList<Task> allTasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +71,47 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("day", day);
                 intent.putExtra("currentDate", dateNow);
 
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
+    }
+
+    public void setUpUI() {
+        LinearLayout taskLayout = findViewById(R.id.displayTasks);
+        //Intent i = getIntent();
+        //Task createdTask = (Task) i.getSerializableExtra("task");
+        //allTasks.add(createdTask);
+        taskLayout.removeAllViews();
+        for (int j = 0; j < allTasks.size(); j++) {
+            View taskChunk = getLayoutInflater().inflate(R.layout.chunk_task,
+                    taskLayout, false);
+            TextView taskName = taskChunk.findViewById(R.id.taskName);
+            TextView timeToday = taskChunk.findViewById(R.id.timeToday);
+            TextView daysLeft = taskChunk.findViewById(R.id.daysLeft);
+            taskName.setText(allTasks.get(j).getName());
+            timeToday.setText(allTasks.get(j).getTime());
+            String s = "days left: " + allTasks.get(j).getDaysBetweent() + "";
+            daysLeft.setText(s);
+            taskLayout.addView(taskChunk);
+        }
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 0) {
+            // Make sure the request was successful
+            if (resultCode == Activity.RESULT_OK) {
+                // The user picked a contact.
+                // The Intent's data Uri identifies which contact was selected.
+                Task createdTask = (Task) data.getSerializableExtra("task");
+                allTasks.add(createdTask);
+                setUpUI();
+                // Do something with the contact here (bigger example below)
+            } else {
+                System.out.println("didn't work");
+            }
+        }
     }
 }
